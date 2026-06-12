@@ -1,0 +1,9 @@
+- **HTML** — static document structure for the portfolio landing page
+- **CSS** — custom styling for typography, glass surfaces, animations, toggles, shadows, and hover effects
+- **JavaScript** — runtime behavior for icon initialization, offline asset resolution, image fallbacks, and security guards
+- **Tailwind CSS** — utility-first CSS framework used for layout, spacing, typography, colors, responsive states, and generated utility styles
+- **Lucide** — icon library used throughout the interface via `data-lucide` icons
+- **Google Fonts** — font delivery service used to load the Inter font stylesheet
+- **Inter** — sans-serif typeface used as the primary font family
+- **Aura** — captured page runtime used for offline data, local asset resolution, fallback handling, and Supabase request protection
+- **Supabase** — backend and storage service referenced by the captured Aura data and asset maps
