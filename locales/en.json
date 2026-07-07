@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "NAÉLIO FREIRES - Front-End Developer",
+    "description": "Front-End Developer crafting fluid interfaces with precision and motion. Available for new projects.",
+    "ogTitle": "Naélio Freires — Front-End Developer",
+    "ogDescription": "Front-End Developer crafting fluid interfaces with precision and motion. Available for new projects.",
+    "ogImageAlt": "Naélio Freires — Front-End Developer. naeliofreires.dev"
+  },
+  "nav": {
+    "about": "About",
+    "expertise": "Expertise",
+    "work": "Work",
+    "contact": "Contact"
+  },
+  "hero": {
+    "availableBadge": "Available for new work",
+    "nameLine1": "NAÉLIO",
+    "nameLine2": "FREIRES",
+    "intro": "I'm a front-end developer with 6+ years of experience. I build web and mobile apps that are fast, clean, and easy to use. I work mostly with React, React Native, TypeScript, and NestJS.",
+    "viewPortfolio": "View Portfolio",
+    "downloadResumeAria": "Download resume PDF",
+    "whatsappAria": "Open WhatsApp",
+    "profileRole": "Front-End Developer",
+    "profileStack": "React · React Native · TypeScript",
+    "statsYears": "6+ Years",
+    "statsLabel": "Building web & mobile apps",
+    "mobileTitle": "React Native",
+    "mobileDetail": "Offline-first · Realm DB · MobX",
+    "coreStackTitle": "Core Stack"
+  },
+  "expertise": {
+    "heading": "Core Expertise",
+    "subheading": "What I do best: clean architecture, mobile apps, and solid quality on every project.",
+    "items": {
+      "architecture": {
+        "title": "Front-End Architecture",
+        "desc": "React, TypeScript, and clean structure to keep apps fast and easy to grow."
+      },
+      "mobile": {
+        "title": "Mobile & Offline-first",
+        "desc": "React Native apps that work offline and stay in sync, even on weak networks."
+      },
+      "quality": {
+        "title": "State, APIs & Quality",
+        "desc": "State tools (Redux, Zustand), APIs (REST, GraphQL), and testing with Jest and Cypress to ship with confidence."
+      },
+      "bots": {
+        "title": "Bots & AI Agents",
+        "desc": "Bots and AI agents that automate tasks and help teams save time."
+      }
+    }
+  },
+  "trajectory": {
+    "eyebrow": "Professional experience",
+    "heading": "Career trajectory",
+    "subheading": "How I got here: from shipping real products and offline-first mobile apps to building data-rich interfaces and working with AI.",
+    "overviewLabel": "Path overview",
+    "overviewYears": "6+",
+    "overviewYearsLabel": "years building web and mobile apps.",
+    "focusLabel": "Focus",
+    "qualityLabel": "Quality",
+    "jobs": {
+      "nexla": {
+        "period": "Jul 2023 – Jul 2026",
+        "company": "Nexla",
+        "role": "Frontend Developer",
+        "title": "Building data-heavy interfaces with AI",
+        "bullets": [
+          "Built React, Redux, and TypeScript interfaces to handle large amounts of data, keeping the app fast and smooth.",
+          "Shipped AI tools that make it easier to transform data and understand the workflow.",
+          "Worked closely with QA and engineering to ship stable releases."
+        ],
+        "tag": "Current"
+      },
+      "koombea": {
+        "period": "Feb 2022 – Jul 2023",
+        "company": "Koombea",
+        "role": "Full Stack Developer",
+        "title": "Shipping web and mobile apps for clients",
+        "bullets": [
+          "Worked on web apps with React and Next.js, and mobile apps with React Native, using GraphQL.",
+          "Helped build an internal React component library to keep the UI consistent and faster to build.",
+          "Helped with deployments, code reviews, and secure teamwork across client projects."
+        ],
+        "tag": "Scale"
+      },
+      "heavyconnect": {
+        "period": "Oct 2020 – Mar 2022",
+        "company": "HeavyConnect",
+        "role": "Mobile Developer",
+        "title": "Offline-first apps for field work",
+        "bullets": [
+          "Built React Native apps for farming work, using MobX and Realm DB.",
+          "Handled data sync and state for weak connections, working with design on simple, practical flows.",
+          "Made the app more reliable across different phones and screen sizes for daily field use."
+        ],
+        "tag": "Offline-first"
+      },
+      "esportudo": {
+        "period": "Oct 2020 – Mar 2022",
+        "company": "Esportudo",
+        "role": "Mobile Developer",
+        "title": "Launched a sports app on web and mobile",
+        "bullets": [
+          "Built a new React Native app and a responsive Next.js website from scratch.",
+          "Improved SEO, speed, and content personalization for sports fans.",
+          "Added categories and social sharing to keep users engaged."
+        ],
+        "tag": "Launch"
+      }
+    }
+  },
+  "work": {
+    "heading": "Selected Projects",
+    "subheading": "Some of my work with AI, automations, migrations, and offline-first apps.",
+    "viewGitHub": "View GitHub",
+    "projects": {
+      "nexlaChatbot": {
+        "title": "Nexla AI Chatbot",
+        "desc": "AI chatbot to transform data, with change checks",
+        "ariaLabel": "Open Nexla on LinkedIn"
+      },
+      "esportudo": {
+        "title": "Esportudo Web & Mobile",
+        "desc": "Custom sports news on Next.js and React Native",
+        "ariaLabel": "Open Esportudo on LinkedIn"
+      },
+      "ionicMigration": {
+        "title": "App Upgrade: Ionic 3 to React Native",
+        "desc": "Planned the migration step by step, with releases and QA"
+      },
+      "heavyconnect": {
+        "title": "HeavyConnect Offline-first App",
+        "desc": "Farming app with Realm DB and MobX sync",
+        "ariaLabel": "Open HeavyConnect on LinkedIn"
+      }
+    }
+  },
+  "footer": {
+    "location": "Brazil · Open to Relocation",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  }
+}
