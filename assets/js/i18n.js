@@ -14,6 +14,7 @@
 
   var SUPPORTED = ['en', 'pt'];
   var DEFAULT_LANG = 'en';
+  var FLAGS = { en: '🇺🇸', pt: '🇧🇷' };
 
   function detectLang() {
     var stored = null;
@@ -90,15 +91,17 @@
     });
   }
 
-  // Updates the active state of language switcher buttons.
+  // Updates the dropdown toggle flag and the active state of language options.
   function updateLangButtons(lang) {
+    var currentEl = document.querySelector('.lang-current');
+    if (currentEl) currentEl.textContent = FLAGS[lang] || '';
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       var isActive = btn.getAttribute('data-lang') === lang;
-      // Active: teal pill; inactive: muted, hover-highlight.
-      btn.className = 'lang-btn px-2.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ' +
+      // Active: teal-tinted ring; inactive: subtle hover.
+      btn.className = 'lang-btn px-2.5 py-1.5 rounded-full text-base leading-none transition-all duration-300 flex items-center justify-center min-w-[36px] ' +
         (isActive
-          ? 'bg-[#81D8D0] text-black'
-          : 'text-white/50 hover:text-white hover:bg-white/10');
+          ? 'bg-[#81D8D0]/20 ring-1 ring-[#81D8D0]/40'
+          : 'hover:bg-white/10');
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
   }
@@ -119,10 +122,41 @@
     },
     init: function () {
       window.I18N.setLang(window.I18N.current);
-      // Wire up the switcher buttons.
+
+      var toggle = document.getElementById('lang-toggle');
+      var menu = document.getElementById('lang-menu');
+
+      function openMenu() {
+        menu.classList.remove('hidden');
+        menu.classList.add('flex');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeMenu() {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+        });
+        // Close when clicking outside the switcher.
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('#lang-switcher')) closeMenu();
+        });
+        // Close on Escape.
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeMenu();
+        });
+      }
+
+      // Wire up the dropdown options.
       document.querySelectorAll('.lang-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
           window.I18N.setLang(btn.getAttribute('data-lang'));
+          closeMenu();
         });
       });
     }
