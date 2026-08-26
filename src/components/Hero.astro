@@ -1,6 +1,7 @@
 ---
 import { t } from '../i18n/utils';
 import type { SupportedLocale } from '../i18n/utils';
+import StackChips from './StackChips.astro';
 
 interface Props {
   lang: SupportedLocale;
@@ -89,12 +90,5 @@ const { lang } = Astro.props;
   </div>
 
   <!-- Core Stack -->
-  <div class="flex flex-wrap items-center justify-center gap-2 opacity-0 animate-fade-in animate-delay-300 mt-2">
-    <span class="border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm px-1.5 py-[3px]">React</span>
-    <span class="border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm px-1.5 py-[3px]">React Native</span>
-    <span class="border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm px-1.5 py-[3px]">TypeScript</span>
-    <span class="border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm px-1.5 py-[3px]">Node.js</span>
-    <span class="border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm px-1.5 py-[3px]">NestJS</span>
-    <span class="border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm px-1.5 py-[3px]">FastAPI</span>
-  </div>
+  <StackChips lang={lang} />
 </div>

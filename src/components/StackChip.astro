@@ -1,0 +1,65 @@
+---
+import type { StackItem } from '../data/stack';
+
+interface Props {
+  item: StackItem;
+  yearsLabel: string;
+  confidenceLabel: string;
+}
+
+const { item, yearsLabel, confidenceLabel } = Astro.props;
+
+const id = `stack-tooltip-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+const chipClass =
+  'border border-brand-ink bg-white text-brand-ink text-[10.5px] font-mono font-semibold uppercase rounded-sm';
+const stars = Array.from({ length: 5 }, (_, i) => i < item.confidence);
+---
+
+<span
+  tabindex="0"
+  data-stack-chip
+  aria-describedby={id}
+  class={`group relative cursor-default rounded-sm px-1.5 py-[3px] outline-none focus-visible:outline-2 focus-visible:outline-brand-ink ${chipClass}`}
+>
+  {item.label}
+  <span
+    role="tooltip"
+    id={id}
+    class="pointer-events-none invisible absolute bottom-full left-1/2 z-50 mb-2 w-max max-w-[240px] -translate-x-1/2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+  >
+    <span class={`block px-2.5 py-2 text-left ${chipClass}`}>
+      <span class="flex items-center justify-between gap-3">
+        <span class="tracking-wider">{item.label}</span>
+        <span class="flex items-center gap-0.5" aria-hidden="true">
+          {
+            stars.map((filled) => (
+              <svg
+                class="h-3 w-3"
+                viewBox="0 0 24 24"
+                fill={filled ? 'var(--color-brand-lime)' : 'rgba(19, 5, 55, 0.1)'}
+                stroke={filled ? 'var(--color-brand-ink)' : 'rgba(19, 5, 55, 0.3)'}
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2l2.9 6.26 6.6 1.01-4.75 4.37L18.18 20 12 16.7 5.82 20l1.43-6.36L2.5 9.27l6.6-1.01L12 2z" />
+              </svg>
+            ))
+          }
+        </span>
+      </span>
+      <span class="mt-1 block text-brand-ink/70">
+        {item.years} {yearsLabel}
+        <span class="sr-only"> — {confidenceLabel}: {item.confidence}/5</span>
+      </span>
+      {
+        item.tools.length > 0 && (
+          <span class="mt-1.5 flex flex-wrap gap-1">
+            {item.tools.map((tool) => (
+              <span class="rounded-sm border border-brand-ink/60 px-1 py-[1px] text-[9.5px]">{tool}</span>
+            ))}
+          </span>
+        )
+      }
+    </span>
+  </span>
+</span>

@@ -1,0 +1,32 @@
+---
+import StackChip from './StackChip.astro';
+import { t } from '../i18n/utils';
+import type { SupportedLocale } from '../i18n/utils';
+import { STACK } from '../data/stack';
+
+interface Props {
+  lang: SupportedLocale;
+}
+
+const { lang } = Astro.props;
+---
+
+<div class="mt-2 flex flex-wrap items-center justify-center gap-2 opacity-0 animate-fade-in animate-delay-300">
+  {
+    STACK.map((item) => (
+      <StackChip
+        item={item}
+        yearsLabel={t(lang, 'hero.stack.yearsLabel')}
+        confidenceLabel={t(lang, 'hero.stack.confidenceLabel')}
+      />
+    ))
+  }
+</div>
+
+<script>
+  document.addEventListener('pointerdown', (event) => {
+    document.querySelectorAll<HTMLElement>('[data-stack-chip]:focus').forEach((chip) => {
+      if (!chip.contains(event.target as Node)) chip.blur();
+    });
+  });
+</script>
