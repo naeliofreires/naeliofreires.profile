@@ -1,0 +1,150 @@
+---
+import { t } from '../i18n/utils';
+import type { SupportedLocale } from '../i18n/utils';
+
+interface Props {
+  lang: SupportedLocale;
+}
+
+const { lang } = Astro.props;
+
+const jobs = [
+  { key: 'nexla', current: true, tagIcon: 'sparkles' },
+  { key: 'koombea', current: false, tagIcon: 'layers-3' },
+  { key: 'heavyconnect', current: false, tagIcon: 'database' },
+  { key: 'esportudo', current: false, tagIcon: 'arrow-up-right' },
+] as const;
+---
+
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-16 md:px-24 py-16 md:py-24 text-brand-ink border-t border-brand-ink/20" id="trajectory" data-timeline-section>
+  <!-- Section Heading -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-5">
+    <div class="max-w-2xl trajectory-summary">
+      <p class="font-mono text-xs uppercase font-semibold tracking-[0.2em] text-brand-ink mb-3">// {t(lang, 'trajectory.eyebrow')}</p>
+      <h2 class="text-4xl md:text-5xl font-bold font-everett uppercase tracking-[-0.02em] leading-[1.2] text-brand-ink mb-3">{t(lang, 'trajectory.heading')}</h2>
+      <p class="text-base md:text-lg font-neue font-normal text-brand-ink/90 max-w-xl trajectory-summary-text">{t(lang, 'trajectory.subheading')}</p>
+    </div>
+  </div>
+
+  <!-- Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-[330px_minmax(0,1fr)] gap-8 lg:gap-12 items-start trajectory-layout">
+
+    <!-- Left: Sticky Overview Sidebar -->
+    <aside class="border border-brand-ink bg-white p-6 md:p-8 lg:sticky lg:top-28 h-fit trajectory-overview">
+      <p class="font-mono text-xs uppercase font-semibold tracking-[0.2em] text-brand-ink/60 mb-5">{t(lang, 'trajectory.overviewLabel')}</p>
+      <div class="space-y-6">
+        <div>
+          <div class="text-4xl md:text-5xl font-bold font-everett text-brand-ink tracking-tight trajectory-years">{t(lang, 'trajectory.overviewYears')}</div>
+          <div class="text-sm font-neue font-normal text-brand-ink/90 mt-2">{t(lang, 'trajectory.overviewYearsLabel')}</div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="border border-brand-ink bg-brand-lime p-4">
+            <div class="text-brand-ink mb-3">
+              <svg class="w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                <path d="m4.4 7.6-2-1.4a1 1 0 0 1 0-1.6l2-1.4"></path>
+                <path d="m4.4 12.6-2-1.4a1 1 0 0 1 0-1.6l2-1.4"></path>
+                <path d="m4.4 17.6-2-1.4a1 1 0 0 1 0-1.6l2-1.4"></path>
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </div>
+            <div class="text-xs font-mono font-semibold text-brand-ink uppercase tracking-[0.15em]">{t(lang, 'trajectory.focusLabel')}</div>
+          </div>
+          <div class="border border-brand-ink bg-white p-4">
+            <div class="text-brand-ink mb-3">
+              <svg class="w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <div class="text-xs font-mono font-semibold text-brand-ink/70 uppercase tracking-[0.15em]">{t(lang, 'trajectory.qualityLabel')}</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right: Timeline -->
+    <div class="relative">
+      <!-- Timeline Line Base -->
+      <div class="absolute left-1.5 md:left-2.5 lg:left-4 top-2 bottom-2 w-px bg-brand-ink/20 rounded-full trajectory-line-base"></div>
+      <!-- Timeline Line Fill (animated by React island) -->
+      <div data-timeline-line-fill class="absolute left-1.5 md:left-2.5 lg:left-4 top-2 bottom-2 w-px rounded-full bg-gradient-to-t from-brand-ink/20 via-brand-ink/70 to-brand-ink origin-top scale-y-0"></div>
+
+      <!-- Job Cards -->
+      <div class="space-y-5 md:space-y-6 trajectory-timeline">
+        {jobs.map((job) => (
+          <article
+            data-timeline-card
+            data-current={job.current ? 'true' : undefined}
+            class="relative pl-10 md:pl-12 opacity-0 translate-y-8 blur-[10px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          >
+            <!-- Timeline Dot -->
+            <span data-timeline-dot class="absolute left-1.5 md:left-2.5 lg:left-4 top-6 h-3.5 w-3.5 rounded-full border border-brand-ink/40 bg-base transition-all duration-700"></span>
+
+            <!-- Card Panel -->
+            <div data-timeline-panel class="border border-brand-ink bg-white p-6 md:p-7 transition-all duration-500">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-3 mb-3">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-brand-ink/90">{t(lang, `trajectory.jobs.${job.key}.period`)}</span>
+                    <span class="border border-brand-ink bg-base text-[10.5px] font-mono font-semibold text-brand-ink tracking-wider uppercase rounded-sm px-1.5 py-[3px]">{t(lang, `trajectory.jobs.${job.key}.company`)}</span>
+                    {job.current ? (
+                      <span class="border border-brand-ink bg-brand-lime text-[10.5px] font-mono font-semibold text-brand-ink tracking-wider uppercase rounded-sm px-1.5 py-[3px]">{t(lang, `trajectory.jobs.${job.key}.role`)}</span>
+                    ) : (
+                      <span class="border border-brand-ink bg-white text-[10.5px] font-mono font-semibold text-brand-ink/70 tracking-wider uppercase rounded-sm px-1.5 py-[3px]">{t(lang, `trajectory.jobs.${job.key}.role`)}</span>
+                    )}
+                  </div>
+                  <h3 class="text-xl md:text-2xl font-bold font-everett uppercase tracking-[-0.02em] text-brand-ink mb-3">{t(lang, `trajectory.jobs.${job.key}.title`)}</h3>
+                  <ul class="text-brand-ink text-sm md:text-base font-neue font-normal leading-relaxed space-y-2 max-w-2xl">
+                    <li class="pl-4 relative"><span class="absolute left-0 top-[0.6em] h-1 w-1 bg-brand-ink"></span>{t(lang, `trajectory.jobs.${job.key}.bullets.0`)}</li>
+                    <li class="pl-4 relative"><span class="absolute left-0 top-[0.6em] h-1 w-1 bg-brand-ink"></span>{t(lang, `trajectory.jobs.${job.key}.bullets.1`)}</li>
+                    <li class="pl-4 relative"><span class="absolute left-0 top-[0.6em] h-1 w-1 bg-brand-ink"></span>{t(lang, `trajectory.jobs.${job.key}.bullets.2`)}</li>
+                  </ul>
+                </div>
+                <div class="shrink-0 md:text-right">
+                  <div class:list={[
+                    'inline-flex items-center gap-2 text-sm font-mono font-semibold',
+                    job.current
+                      ? 'text-brand-ink'
+                      : 'text-brand-ink/50',
+                  ]}>
+                    {job.tagIcon === 'sparkles' && (
+                      <svg class="w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                        <path d="M5 3v4"></path>
+                        <path d="M19 17v4"></path>
+                        <path d="M3 5h4"></path>
+                        <path d="M17 19h4"></path>
+                      </svg>
+                    )}
+                    {job.tagIcon === 'layers-3' && (
+                      <svg class="w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"></path>
+                        <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+                      </svg>
+                    )}
+                    {job.tagIcon === 'database' && (
+                      <svg class="w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                        <path d="M3 12A9 3 0 0 0 21 12"></path>
+                      </svg>
+                    )}
+                    {job.tagIcon === 'arrow-up-right' && (
+                      <svg class="w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path>
+                      </svg>
+                    )}
+                    <span>{t(lang, `trajectory.jobs.${job.key}.tag`)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

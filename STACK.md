@@ -1,9 +1,8 @@
-- **HTML** — static document structure for the portfolio landing page
-- **CSS** — custom styling for typography, glass surfaces, animations, toggles, shadows, and hover effects
-- **JavaScript** — runtime behavior for icon initialization, offline asset resolution, image fallbacks, and security guards
-- **Tailwind CSS** — utility-first CSS framework used for layout, spacing, typography, colors, responsive states, and generated utility styles
-- **Lucide** — icon library used throughout the interface via `data-lucide` icons
-- **Google Fonts** — font delivery service used to load the Inter font stylesheet
-- **Inter** — sans-serif typeface used as the primary font family
-- **Aura** — captured page runtime used for offline data, local asset resolution, fallback handling, and Supabase request protection
-- **Supabase** — backend and storage service referenced by the captured Aura data and asset maps
+- **Astro** — static site generator with island architecture for zero-JS defaults and selective hydration
+- **React** — UI framework used for interactive islands (language switcher, timeline animations)
+- **Tailwind CSS v4** — utility-first CSS framework for layout, spacing, typography, colors, and responsive design
+- **TypeScript** — type-safe language for all components and utilities
+- **Lucide** — icon library used via inline SVGs throughout the interface
+- **Local fonts** — self-hosted Neue (body), Everett (headings), and Mono (labels) TTFs served from `public/fonts/`
+- **Vercel** — deployment platform with Web Analytics and edge network
+- **i18n** — custom URL-based internationalization system (EN/PT) with static rendering per locale

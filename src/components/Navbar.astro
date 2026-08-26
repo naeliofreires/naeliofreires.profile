@@ -1,0 +1,45 @@
+---
+import { t } from '../i18n/utils';
+import type { SupportedLocale } from '../i18n/utils';
+import LanguageSwitcher from './react/LanguageSwitcher';
+
+interface Props {
+  lang: SupportedLocale;
+}
+
+const { lang } = Astro.props;
+---
+
+<nav class="sticky top-0 z-50 w-full bg-base border-b border-brand-ink/10">
+  <div class="flex items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-16 md:px-24 py-3">
+    <!-- Logo -->
+    <a href="#about" class="flex items-center gap-2 group">
+      <span class="flex items-center justify-center w-9 h-9 border border-brand-ink bg-brand-ink text-base font-everett text-base uppercase rounded-[3px]">NF</span>
+      <span class="hidden sm:block text-sm font-mono text-brand-ink uppercase tracking-tight">Naelio Freires</span>
+    </a>
+
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center gap-1 font-neue">
+      <a href="#about" class="text-sm text-brand-ink px-3 py-2 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.about')}</a>
+      <a href="#expertise" class="text-sm text-brand-ink px-3 py-2 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.expertise')}</a>
+      <a href="#work" class="text-sm text-brand-ink px-3 py-2 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.work')}</a>
+    </div>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <LanguageSwitcher client:idle currentLang={lang} />
+      <a
+        href="mailto:naeliofreires@gmail.com"
+        class="flex items-center gap-2 rounded-[3px] border-[1.5px] border-brand-ink bg-brand-lime px-4 py-2 text-sm font-bold font-neue text-brand-ink transition-all duration-300 hover:bg-brand-lime-hover"
+      >
+        {t(lang, 'nav.contact')}
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="md:hidden flex items-center justify-center gap-1 border-t border-brand-ink/10 py-1 font-neue">
+    <a href="#about" class="text-xs font-medium text-brand-ink px-3 py-1.5 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.about')}</a>
+    <a href="#expertise" class="text-xs font-medium text-brand-ink px-3 py-1.5 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.expertise')}</a>
+    <a href="#work" class="text-xs font-medium text-brand-ink px-3 py-1.5 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.work')}</a>
+  </div>
+</nav>

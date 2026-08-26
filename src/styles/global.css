@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+@source not "../../new-design-system.ai";
+@source not "../../dist";
+@source not "../../scratch";
+
+/* ─── Fonts ─── */
+@font-face {
+  font-family: "Neue";
+  src: url("/fonts/neue-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue";
+  src: url("/fonts/neue-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue";
+  src: url("/fonts/neue-medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue";
+  src: url("/fonts/neue-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Everett";
+  src: url("/fonts/everett-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mono";
+  src: url("/fonts/mono-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mono";
+  src: url("/fonts/mono-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Theme tokens ─── */
+@theme {
+  /* Brand */
+  --color-brand-ink: #130537;
+  --color-brand-lime: #c7ff01;
+  --color-brand-lime-hover: #b8f000;
+  --color-brand-lavender: #dcb3f2;
+
+  /* Backgrounds */
+  --color-base: #e8e8e2;
+  --color-base-soft: #f1f1ee;
+  --color-base-hover: #ddddd7;
+  --color-periwinkle: #bcb3f2;
+  --color-sand: #dddbcd;
+  --color-sage: #cddcdd;
+
+  /* Typography */
+  --font-neue: "Neue", "Arial", sans-serif;
+  --font-everett: "Everett", "Arial", sans-serif;
+  --font-mono: "Mono", ui-monospace, monospace;
+}
+
+/* ─── Base styles ─── */
+body {
+  font-family: var(--font-neue);
+  background-color: var(--color-base);
+  color: var(--color-brand-ink);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* ─── Fade Animation ─── */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-iteration-count: 1;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+
+/* ─── Marquee scroller ─── */
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* ─── Trajectory / Timeline ─── */
+#trajectory .trajectory-summary {
+  max-width: 42rem;
+}
+
+#trajectory .trajectory-summary-text {
+  max-width: 36rem;
+}
+
+#trajectory .trajectory-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+#trajectory .trajectory-overview {
+  height: fit-content;
+}
+
+#trajectory .trajectory-years {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+#trajectory .trajectory-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+#trajectory .trajectory-line-base,
+#trajectory [data-timeline-line-fill] {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  border-radius: 9999px;
+}
+
+#trajectory .trajectory-line-base {
+  display: block;
+  background: radial-gradient(circle, rgba(19, 5, 55, 0.72) 0 1.5px, transparent 1.7px);
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-size: 2px 12px;
+}
+
+#trajectory [data-timeline-line-fill] {
+  display: none;
+  background: linear-gradient(to top, rgba(19, 5, 55, 0.55), #130537);
+  transform: scaleY(0);
+  transform-origin: top;
+  will-change: transform;
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 8px, transparent 8px 15px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 8px, transparent 8px 15px);
+}
+
+#trajectory [data-timeline-card] {
+  position: relative;
+  padding-left: 2.5rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  filter: blur(10px);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#trajectory [data-timeline-card].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+#trajectory [data-timeline-dot] {
+  position: absolute;
+  left: 0.375rem;
+  top: 1.5rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(19, 5, 55, 0.35);
+  background: var(--color-base);
+  box-shadow: 0 0 0 6px rgba(19, 5, 55, 0.04);
+  transition:
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#trajectory [data-timeline-card].is-active [data-timeline-dot] {
+  background-color: var(--color-brand-lime) !important;
+  border-color: rgba(19, 5, 55, 0.6) !important;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(199, 255, 1, 0.25);
+}
+
+#trajectory [data-timeline-card][data-current="true"] [data-timeline-dot] {
+  background-color: var(--color-brand-lime) !important;
+  border-color: rgba(19, 5, 55, 0.6) !important;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 7px rgba(199, 255, 1, 0.3), 0 0 18px rgba(199, 255, 1, 0.55);
+  animation: trajectory-current-dot-flicker 2.4s ease-in-out infinite;
+}
+
+@keyframes trajectory-current-dot-flicker {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 7px rgba(199, 255, 1, 0.3), 0 0 18px rgba(199, 255, 1, 0.55);
+  }
+  42% {
+    opacity: 0.82;
+    box-shadow: 0 0 0 4px rgba(199, 255, 1, 0.18), 0 0 12px rgba(199, 255, 1, 0.35);
+  }
+  48% {
+    opacity: 1;
+    box-shadow: 0 0 0 9px rgba(199, 255, 1, 0.35), 0 0 22px rgba(199, 255, 1, 0.65);
+  }
+  54% {
+    opacity: 0.9;
+    box-shadow: 0 0 0 6px rgba(199, 255, 1, 0.22), 0 0 15px rgba(199, 255, 1, 0.45);
+  }
+}
+
+#trajectory [data-timeline-panel] {
+  transition: background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease, transform 500ms ease;
+}
+
+#trajectory [data-timeline-panel]:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+#trajectory [data-current="true"] [data-timeline-panel],
+#trajectory [data-timeline-card].is-active [data-timeline-panel] {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(19, 5, 55, 0.45);
+}
+
+@media (min-width: 768px) {
+  #trajectory .md\:p-7 { padding: 1.75rem; }
+  #trajectory [data-timeline-card] { padding-left: 3rem; }
+  #trajectory .trajectory-line-base,
+  #trajectory [data-timeline-line-fill] { left: 1rem; }
+  #trajectory [data-timeline-dot] { left: 0.625rem; }
+}
+
+@media (min-width: 1024px) {
+  #trajectory .trajectory-layout {
+    grid-template-columns: 330px minmax(0, 1fr);
+    gap: 3rem;
+  }
+  #trajectory .trajectory-overview {
+    position: sticky;
+    top: 7rem;
+  }
+  #trajectory .trajectory-line-base,
+  #trajectory [data-timeline-line-fill] { left: 1.375rem; }
+  #trajectory [data-timeline-dot] { left: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-timeline-card],
+  [data-timeline-line-fill],
+  [data-timeline-dot],
+  [data-timeline-panel] {
+    transition: none !important;
+    animation: none !important;
+    filter: none !important;
+  }
+  [data-timeline-card] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  [data-timeline-line-fill] {
+    transform: scaleY(1) !important;
+  }
+}

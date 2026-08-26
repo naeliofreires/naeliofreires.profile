@@ -1,0 +1,46 @@
+---
+import { t } from '../i18n/utils';
+import type { SupportedLocale } from '../i18n/utils';
+
+interface Props {
+  lang: SupportedLocale;
+}
+
+const { lang } = Astro.props;
+
+const stack = [
+  'React',
+  'React Native',
+  'TypeScript',
+  'Next.js',
+  'Redux',
+  'Zustand',
+  'Node.js',
+  'NestJS',
+  'GraphQL',
+  'REST',
+  'Jest',
+  'Cypress',
+  'Tailwind CSS',
+  'FastAPI',
+];
+---
+
+<section class="w-full font-mono text-center px-4 py-8 md:py-12">
+  <p class="text-xs md:text-sm text-brand-ink uppercase font-medium tracking-[-0.02em] mb-1">
+    {t(lang, 'marquee.label')}
+  </p>
+  <div
+    class="scroller relative z-20 max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]"
+    style="--animation-duration: 80s;"
+  >
+    <ul class="flex min-w-full shrink-0 gap-12 py-4 w-max flex-nowrap animate-scroll">
+      {stack.concat(stack).map((item) => (
+        <li class="w-auto flex-shrink-0 flex items-center justify-center text-sm md:text-base font-medium uppercase tracking-tight text-brand-ink/80">
+          {item}
+          <span class="ml-12 inline-block h-1.5 w-1.5 rounded-full bg-brand-lime border border-brand-ink/40" aria-hidden="true"></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

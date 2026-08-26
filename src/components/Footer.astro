@@ -1,0 +1,46 @@
+---
+import { t } from '../i18n/utils';
+import type { SupportedLocale } from '../i18n/utils';
+
+interface Props {
+  lang: SupportedLocale;
+}
+
+const { lang } = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full mt-16 md:mt-24">
+  <div class="border-t border-brand-ink border-dashed">
+    <div class="mx-auto w-full max-w-6xl border-r border-l border-brand-ink border-dashed">
+      <div class="px-4 sm:px-16 md:px-24 py-10 md:py-14">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Brand -->
+          <div class="flex flex-col gap-3">
+            <span class="flex items-center justify-center w-10 h-10 border border-brand-ink bg-brand-ink text-white font-everett uppercase rounded-[3px]">NF</span>
+            <p class="text-lg font-everett uppercase tracking-[-0.02em] text-brand-ink">Naelio Freires</p>
+            <p class="text-sm font-neue text-brand-ink/70">{t(lang, 'hero.profileRole')}</p>
+          </div>
+
+          <!-- Social -->
+          <div class="flex flex-col gap-3">
+            <p class="font-mono text-xs font-semibold uppercase text-brand-ink">// {t(lang, 'footer.social')}</p>
+            <div class="flex flex-col gap-2 font-neue">
+              <a href="https://github.com/naeliofreires" target="_blank" rel="noopener noreferrer" class="w-fit text-sm text-brand-ink underline underline-offset-4 decoration-[1.5px] hover:opacity-70 transition-opacity">GitHub</a>
+              <a href="https://linkedin.com/in/naeliofreires" target="_blank" rel="noopener noreferrer" class="w-fit text-sm text-brand-ink underline underline-offset-4 decoration-[1.5px] hover:opacity-70 transition-opacity">LinkedIn</a>
+              <a href="mailto:naeliofreires@gmail.com" class="w-fit text-sm text-brand-ink underline underline-offset-4 decoration-[1.5px] hover:opacity-70 transition-opacity">naeliofreires@gmail.com</a>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="flex flex-col gap-3">
+            <p class="font-mono text-xs font-semibold uppercase text-brand-ink">// {t(lang, 'footer.locationLabel')}</p>
+            <p class="text-sm font-neue text-brand-ink">{t(lang, 'footer.location')}</p>
+            <p class="font-mono text-xs text-brand-ink/60 uppercase">© {year} — NF</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
