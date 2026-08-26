@@ -7,6 +7,10 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+const resume = lang === 'pt'
+  ? { href: '/assets/naelio-freires-resume-pt.pdf', download: 'Naelio-Freires-Curriculo-PT-BR.pdf' }
+  : { href: '/assets/naelio-freires-resume-en.pdf', download: 'Naelio-Freires-Resume-ENG.pdf' };
 ---
 
 <div class="w-full max-w-6xl mx-auto flex flex-col items-center justify-center gap-6 md:gap-8 text-center">
@@ -74,7 +78,7 @@ const { lang } = Astro.props;
         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
       </svg>
     </a>
-    <a class="flex items-center justify-center w-10 h-10 border border-brand-ink text-brand-ink hover:bg-base-hover transition-colors rounded-[3px]" href="/assets/naelio-freires-resume.pdf" download="Naelio-Freires-Resume.pdf" aria-label={t(lang, 'hero.downloadResumeAria')}>
+    <a class="flex items-center justify-center w-10 h-10 border border-brand-ink text-brand-ink hover:bg-base-hover transition-colors rounded-[3px]" href={resume.href} download={resume.download} aria-label={t(lang, 'hero.downloadResumeAria')}>
       <svg class="w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
         <polyline points="7 10 12 15 17 10"></polyline>
