@@ -18,7 +18,7 @@ const stars = Array.from({ length: 5 }, (_, i) => i < item.confidence);
 <span
   tabindex="0"
   aria-describedby={id}
-  class={`group relative cursor-help rounded-sm px-1.5 py-[3px] outline-none focus-visible:outline-2 focus-visible:outline-brand-ink ${chipClass}`}
+  class={`group relative cursor-pointer rounded-sm px-1.5 py-[3px] outline-none focus-visible:outline-2 focus-visible:outline-brand-ink ${chipClass}`}
 >
   {item.label}
   <span
