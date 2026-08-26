@@ -19,7 +19,11 @@
     "viewPortfolio": "Ver Portfólio",
     "downloadResumeAria": "Baixar currículo em PDF",
     "whatsappAria": "Abrir WhatsApp",
-    "profileRole": "Desenvolvedor Front-End"
+    "profileRole": "Desenvolvedor Front-End",
+    "stack": {
+      "yearsLabel": "anos de experiência",
+      "confidenceLabel": "confiança"
+    }
   },
   "expertise": {
     "eyebrow": "Áreas de atuação",

@@ -19,7 +19,11 @@
     "viewPortfolio": "View Portfolio",
     "downloadResumeAria": "Download resume PDF",
     "whatsappAria": "Open WhatsApp",
-    "profileRole": "Front-End Developer"
+    "profileRole": "Front-End Developer",
+    "stack": {
+      "yearsLabel": "years of experience",
+      "confidenceLabel": "confidence"
+    }
   },
   "expertise": {
     "eyebrow": "Areas of expertise",
