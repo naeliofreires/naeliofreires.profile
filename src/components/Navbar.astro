@@ -23,6 +23,10 @@ const { lang } = Astro.props;
       <a href="#about" class="text-sm text-brand-ink px-3 py-2 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.about')}</a>
       <a href="#expertise" class="text-sm text-brand-ink px-3 py-2 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.expertise')}</a>
       <a href="#work" class="text-sm text-brand-ink px-3 py-2 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.work')}</a>
+      <span class="flex items-center gap-1.5 text-sm text-brand-ink/50 px-3 py-2 rounded-[3px] cursor-default" aria-disabled="true">
+        {t(lang, 'nav.articles')}
+        <span class="border border-brand-ink/40 bg-white text-brand-ink/70 text-[9px] font-mono font-semibold uppercase rounded-sm px-1 py-[1px]">{t(lang, 'nav.articlesBadge')}</span>
+      </span>
     </div>
 
     <div class="flex items-center gap-2 sm:gap-3">
@@ -41,5 +45,9 @@ const { lang } = Astro.props;
     <a href="#about" class="text-xs font-medium text-brand-ink px-3 py-1.5 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.about')}</a>
     <a href="#expertise" class="text-xs font-medium text-brand-ink px-3 py-1.5 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.expertise')}</a>
     <a href="#work" class="text-xs font-medium text-brand-ink px-3 py-1.5 rounded-[3px] hover:bg-base-hover transition-colors">{t(lang, 'nav.work')}</a>
+    <span class="flex items-center gap-1 text-xs font-medium text-brand-ink/50 px-3 py-1.5 rounded-[3px] cursor-default" aria-disabled="true">
+      {t(lang, 'nav.articles')}
+      <span class="border border-brand-ink/40 bg-white text-brand-ink/70 text-[8.5px] font-mono font-semibold uppercase rounded-sm px-1 py-[1px]">{t(lang, 'nav.articlesBadge')}</span>
+    </span>
   </div>
 </nav>
